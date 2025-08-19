@@ -1,11 +1,10 @@
 import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import { errorHandler } from './src/middlewares/error.middleware.js';
 
 // Import route files
 import authRoutes from './src/routes/auth.routes.js';
-import leaveRoutes from './src/routes/leave.routes.js';
+// import leaveRoutes from './src/routes/leaveRoutes.js';
 
 const app = express();
 
@@ -25,9 +24,9 @@ app.use(cookieParser());
 
 // Routes
 app.use('/api/auth', authRoutes);
-app.use('/api/leaves', leaveRoutes);
+// app.use('/api/leaves', leaveRoutes);
 
 // Error handler
-app.use(errorHandler);
+// app.use(errorHandler);
 
 export { app };
