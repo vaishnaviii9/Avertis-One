@@ -7,12 +7,15 @@ const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '30d' });
 };
 
+// controllers/authController.js
 export const registerUser = async (req, res) => {
   const { name, email, password, role } = req.body;
 
   try {
     const userExists = await User.findOne({ email });
-    if (userExists) return res.status(400).json({ message: 'User already exists' });
+    if (userExists) {
+      return res.status(400).json({ message: 'User already exists' });
+    }
 
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await User.create({ name, email, password: hashedPassword, role });
@@ -22,12 +25,13 @@ export const registerUser = async (req, res) => {
       name: user.name,
       email: user.email,
       role: user.role,
-      token: generateToken(user._id)
+      message: 'User registered successfully'
     });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
+
 
 export const loginUser = async (req, res) => {
   const { email, password } = req.body;
