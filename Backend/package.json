@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
+<<<<<<< HEAD
   "dev": "nodemon index.js"
   },
   "keywords": [],
@@ -24,5 +25,23 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
+=======
+    "dev": "nodemon index.js",
+    "seed:admin": "node src/seed/adminSeeder.js"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.17.1"
+>>>>>>> Kedar
   }
 }
